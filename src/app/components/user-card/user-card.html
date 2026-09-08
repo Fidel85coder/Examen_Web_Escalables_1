@@ -1,0 +1,9 @@
+
+<article class="card">
+  <img [src]="user().image" [alt]="user().name" class="card-avatar" />
+  <div class="card-content">
+    <h2 class="card-name">{{ user().name }}</h2>
+    <p class="card-username">@{{ user().username }}</p>
+    <p class="card-email">{{ user().email }}</p>
+  </div>
+</article>
