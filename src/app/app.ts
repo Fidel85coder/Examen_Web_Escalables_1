@@ -16,7 +16,7 @@ export class App {
   public users: WritableSignal<User[]> = signal<User[]>(
     [{
       "id": 1,
-      "name": "Leanne Graham",
+      "name": "Leanne Graham Third",
       "username": "LeGra",
       "email": "legra@gmail.com",
       "image": "https://i.pravatar.cc/150?img=1"
