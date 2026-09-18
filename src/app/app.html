@@ -1,11 +1,14 @@
 <main class="container">
-  <h1 class="title">{{ title() }}</h1>
+  <h1 class="title">{{ title() }} ({{ numUsers()}} usuarios)</h1>
 
   <app-control (orderByIdClick)="orderById()" (orderByNameClick)="orderByName()" (reverseClick)="reverse()"></app-control>
   
   <section class="card-grid">
     @for (user of users(); track $index) { 
-      <app-user-card [user]="user"></app-user-card>
+      <app-user-card [user]="user" (eliminateClick)="eliminateUser($event)"></app-user-card>
+    }
+    @empty {
+      <p>Ya no quedan usuarios.</p>
     }
   </section>
 </main>

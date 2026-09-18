@@ -1,4 +1,4 @@
-import { Component, input, signal, WritableSignal } from '@angular/core';
+import { Component, input, output, signal, WritableSignal } from '@angular/core';
 import { User } from '../../interfaces/user.interface';
 
 @Component({
@@ -9,4 +9,9 @@ import { User } from '../../interfaces/user.interface';
 })
 export class UserCard {
   public user = input.required<User>();
+  public eliminateClick = output<number>();
+
+  public eliminateUser(): void {
+    this.eliminateClick.emit(this.user().id);
+  }
 }

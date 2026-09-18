@@ -1,4 +1,4 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, computed, Signal, signal, WritableSignal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { User } from './interfaces/user.interface';
 import { UserCard } from "./components/user-card/user-card";
@@ -65,6 +65,8 @@ export class App {
     }
     ]);
 
+    public numUsers: Signal<number> = computed(() => this.users().length);
+
     public orderByName(): void {
       this.users.update(users => users.sort((a, b) => a.name.localeCompare(b.name)));
     }
@@ -74,5 +76,7 @@ export class App {
     public reverse(): void {
       this.users.update(users => users.reverse());
     }
-    
+    public eliminateUser(id: number): void {
+      this.users.update(users => users.filter(user => user.id !== id));
+    }
 }
