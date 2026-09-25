@@ -1,25 +1,184 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 .container {
-  max-width: 1200px;
+  width: min(1200px, 100%);
   margin: 0 auto;
   padding: 2rem;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.title {
+  margin: 0 0 2rem;
+
+  color: #111827;
+
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+
+  text-align: center;
+}
+
+.modern-form {
+  width: min(100%, 500px);
+
+  margin: 0 auto 3rem;
+  padding: 2rem;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.03),
+    0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.modern-form h2 {
+  margin: 0 0 1.5rem;
+
+  color: #1e293b;
+
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.form-control-group {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 1.25rem;
+}
+
+.form-control-group label {
+  margin-bottom: 0.5rem;
+
+  color: #475569;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-control-group input {
+  width: 100%;
+
+  padding: 0.75rem 0.875rem;
+
+  background: #ffffff;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+
+  color: #1e293b;
+
+  font-family: inherit;
+  font-size: 1rem;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.form-control-group input::placeholder {
+  color: #94a3b8;
+}
+
+.form-control-group input:focus {
+  outline: none;
+
+  border-color: #6366f1;
+
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+
+.form-control-group input.ng-invalid.ng-touched {
+  border-color: #ef4444;
+}
+
+.form-control-group input.ng-invalid.ng-touched:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+.error-text {
+  margin-top: 0.4rem;
+
+  color: #dc2626;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.modern-form button {
+  width: 100%;
+
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+
+  background-color: #6366f1;
+
+  border: none;
+  border-radius: 8px;
+
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.modern-form button:hover:not(:disabled) {
+  background-color: #4f46e5;
+}
+
+.modern-form button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.modern-form button:disabled {
+  background-color: #94a3b8;
+
+  cursor: not-allowed;
 }
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  );
+
   gap: 1.5rem;
 }
 
-.title {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-  color: #111111;
-  margin-top: 0;
-  margin-bottom: 1rem;
+.empty-message {
+  grid-column: 1 / -1;
+
+  margin: 2rem 0;
+
+  color: #64748b;
+
+  font-size: 1rem;
+
+  text-align: center;
 }
-
-

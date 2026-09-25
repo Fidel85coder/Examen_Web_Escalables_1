@@ -3,15 +3,23 @@ import { RouterOutlet } from '@angular/router';
 import { User } from './interfaces/user.interface';
 import { UserCard } from "./components/user-card/user-card";
 import { Control } from './components/control/control';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [UserCard, Control],
+  imports: [UserCard, Control, ReactiveFormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('directorio');
+
+  userForm = new FormGroup({
+    name: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    username: new FormControl("", [Validators.required]),
+    email: new FormControl("", [Validators.required, Validators.email]),
+    image: new FormControl("", [Validators.required])
+  })
 
   public users: WritableSignal<User[]> = signal<User[]>(
     [{
@@ -78,5 +86,18 @@ export class App {
     }
     public eliminateUser(id: number): void {
       this.users.update(users => users.filter(user => user.id !== id));
+    }
+    public search(value: string): void {
+      console.log(value);
+    }
+
+    public onSubmit(): void {
+      if (this.userForm.valid) {
+        console.log("Procesar", this.userForm.value);
+        this.userForm.reset();
+      } else {
+        console.log("incorrectos");
+        this.userForm.markAllAsTouched();
+      }
     }
 }
