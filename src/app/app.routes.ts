@@ -3,12 +3,14 @@ import { HomePage } from './pages/home-page/home-page';
 import { AboutPage } from './pages/about-page/about-page';
 import { ContactPage } from './pages/contact-page/contact-page';
 import { NotFoundPage } from './pages/not-found-page/not-found-page';
+import { FormUsersPage } from './pages/form-users-page/form-users-page';
 
 export const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home', component: HomePage},
-  {path: 'contact', component: ContactPage},
-  {path: 'about', component: AboutPage},
-  {path: 'not-found', component: NotFoundPage},
-  {path: '**', redirectTo: 'not-found', pathMatch: 'full'}
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomePage },
+  { path: 'contact', component: ContactPage },
+  { path: 'about', component: AboutPage },
+  { path: 'create-user', component: FormUsersPage },
+  { path: 'not-found', component: NotFoundPage },
+  { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];

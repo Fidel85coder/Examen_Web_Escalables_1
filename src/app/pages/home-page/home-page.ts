@@ -2,23 +2,15 @@ import { Component, computed, Signal, signal, WritableSignal } from '@angular/co
 import { User } from '../../interfaces/user.interface';
 import { UserCard } from '../../components/user-card/user-card';
 import { Control } from '../../components/control/control';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
-  imports: [UserCard, Control, ReactiveFormsModule],
+  imports: [UserCard, Control],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',
 })
 export class HomePage {
   protected readonly title = signal('directorio');
-
-  userForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    username: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    image: new FormControl('', [Validators.required]),
-  });
 
   public users: WritableSignal<User[]> = signal<User[]>([
     {
@@ -88,15 +80,5 @@ export class HomePage {
   }
   public search(value: string): void {
     console.log(value);
-  }
-
-  public onSubmit(): void {
-    if (this.userForm.valid) {
-      console.log('Procesar', this.userForm.value);
-      this.userForm.reset();
-    } else {
-      console.log('incorrectos');
-      this.userForm.markAllAsTouched();
-    }
   }
 }

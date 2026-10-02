@@ -65,8 +65,8 @@
   white-space: nowrap;
 }
 
-.button-7:hover,
-.button-7:focus {
+.button-eliminate:hover,
+.button-eliminate:focus {
   background-color: #07c;
 }
 
