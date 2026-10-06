@@ -1,7 +1,7 @@
 <main class="container">
 
   <h1 class="title">
-    {{ title() }} ({{ numUsers() }} usuarios)
+    {{ title() }} ({{ numUsers() }} users)
   </h1>
 
   <app-control (orderByIdClick)="orderById()" (orderByNameClick)="orderByName()" (reverseClick)="reverse()"
@@ -16,7 +16,7 @@
     }
     @empty {
 
-    <p>Ya no quedan usuarios.</p>
+    <p>No users left.</p>
 
     }
 

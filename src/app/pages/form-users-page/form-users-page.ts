@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UserService } from '../../services/user-service';
 
 @Component({
   selector: 'app-form-users-page',
@@ -8,18 +9,20 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './form-users-page.css',
 })
 export class FormUsersPage {
+  private userService = inject(UserService);
+
   userForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    username: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    image: new FormControl('', [Validators.required]),
+    name: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(3)], }),
+    username: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email], }),
+    image: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
   });
   public onSubmit(): void {
     if (this.userForm.valid) {
-      console.log('Procesar', this.userForm.value);
-      this.userForm.reset();
+      const formData = this.userForm.getRawValue();
+      this.userService.addUser(formData);
     } else {
-      console.log('incorrectos');
+      console.log('incorrect value ');
       this.userForm.markAllAsTouched();
     }
   }
